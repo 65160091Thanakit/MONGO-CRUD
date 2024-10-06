@@ -1,12 +1,15 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+
 
 // Import item routes
 const itemRoutes = require('./routes/itemRoutes');
 
 // Create Express app
 const app = express();
+app.use(cors());
 
 // Middleware to parse incoming JSON requests
 app.use(bodyParser.json());

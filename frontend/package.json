@@ -32,6 +32,7 @@
     "axios": "^1.7.7",
     "chart.js": "4.4.2",
     "cookie-es": "1.0.0",
+    "cors": "^2.8.5",
     "eslint-plugin-regexp": "2.2.0",
     "jwt-decode": "4.0.0",
     "mapbox-gl": "3.1.2",

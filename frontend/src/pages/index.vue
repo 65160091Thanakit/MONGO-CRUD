@@ -76,7 +76,8 @@ export default {
   methods: {
     async fetchItems() {
       try {
-        const response = await axios.get('http://localhost:3000/api/'); // เปลี่ยน API path
+        const response = await axios.get('http://localhost:3000/items/'); // เปลี่ยน API path
+        console.log(response)
         this.items = response.data;
       } catch (error) {
         console.error(error);
@@ -95,9 +96,9 @@ export default {
     async saveItem() {
       try {
         if (this.editMode) {
-          await axios.put(`http://localhost:3000/api/${this.form._id}`, this.form); // อัปเดตข้อมูลสินค้า
+          await axios.put(`http://localhost:3000/items/${this.form._id}`, this.form); // อัปเดตข้อมูลสินค้า
         } else {
-          await axios.post('http://localhost:3000/api/', this.form); // สร้างสินค้าใหม่
+          await axios.post('http://localhost:3000/items/', this.form); // สร้างสินค้าใหม่
         }
         this.dialog = false;
         this.fetchItems();
@@ -107,7 +108,7 @@ export default {
     },
     async deleteItem(id) {
       try {
-        await axios.delete(`http://localhost:3000/api/${id}`); // ลบสินค้า
+        await axios.delete(`http://localhost:3000/items/${id}`); // ลบสินค้า
         this.fetchItems();
       } catch (error) {
         console.error(error);
