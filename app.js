@@ -14,7 +14,7 @@ app.use(cors()); // เปิดใช้งาน CORS สำหรับกา
 app.use(bodyParser.json());
 
 // MongoDB connection (update with your MongoDB URI)
-mongoose.connect('mongodb://localhost:27017/kpiDB', {
+mongoose.connect('mongodb://localhost:27017/crud-example', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -31,3 +31,4 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server running on port http://localhost:${port}`);
 });
+
