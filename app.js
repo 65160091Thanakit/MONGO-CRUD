@@ -1,28 +1,33 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // เพิ่มเพื่อจัดการ CORS
 
-// Import item routes
-const itemRoutes = require('./routes/itemRoutes');
+// Import KPI routes
+const kpiRoutes = require('./routes/kpiRoutes');
 
 // Create Express app
 const app = express();
 
-// Middleware to parse incoming JSON requests
+// Middleware to parse incoming JSON requests and handle CORS
+app.use(cors()); // เปิดใช้งาน CORS สำหรับการติดต่อกับ frontend
 app.use(bodyParser.json());
 
 // MongoDB connection (update with your MongoDB URI)
-mongoose.connect('mongodb://localhost:27017/crud-example')
+mongoose.connect('mongodb://localhost:27017/kpiDB', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
-// Use routes
-app.use('/items', itemRoutes);
+// Use KPI routes
+app.use('/api', kpiRoutes); // ใช้เส้นทางสำหรับ KPI
 
 // Define a port
 const port = process.env.PORT || 3000;
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server running on port  http://localhost:${port}`);
+    console.log(`Server running on port http://localhost:${port}`);
 });
